@@ -54,6 +54,15 @@ export default function XapPage() {
               about respecting the storyteller — the kind of judgement I
               care the most about bringing to any piece of editing.
             </p>
+            <a
+              href="/xap-november-2025.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-sm text-accent-brass"
+            >
+              Read the full November 2025 issue
+              <span aria-hidden>→</span>
+            </a>
           </div>
         </Reveal>
 
@@ -128,6 +137,15 @@ export default function XapPage() {
               bring to my working style: the tool can assist, the judgement
               and the voice have to stay human.
             </p>
+            <a
+              href="/xap-june-2026.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-sm text-accent-brass"
+            >
+              Read the full June 2026 issue
+              <span aria-hidden>→</span>
+            </a>
           </div>
         </Reveal>
 
@@ -194,6 +212,48 @@ export default function XapPage() {
               November 2024 without letting the review become an argument
               about politics it didn&rsquo;t need to have.
             </p>
+
+            <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+              <figure className="overflow-hidden rounded-xl border border-navy/10">
+                <Image
+                  src="/xap-india-diversity.jpg"
+                  alt="'India: An Ombre of Diversity', by Nirjara Poptani, XAP August–September 2024 issue"
+                  width={1600}
+                  height={1392}
+                  className="w-full"
+                />
+                <figcaption className="px-4 py-3 text-xs text-navy/50">
+                  &ldquo;India: An Ombre of Diversity&rdquo; — Aug–Sept 2024
+                </figcaption>
+              </figure>
+
+              <figure className="overflow-hidden rounded-xl border border-navy/10">
+                <Image
+                  src="/xap-sabarmati-review.jpg"
+                  alt="Movie review of 'The Sabarmati Report', by Nirjara Poptani, XAP November 2024 issue"
+                  width={1600}
+                  height={1070}
+                  className="w-full"
+                />
+                <figcaption className="px-4 py-3 text-xs text-navy/50">
+                  &ldquo;The Sabarmati Report&rdquo; review — Nov 2024
+                </figcaption>
+              </figure>
+
+              <figure className="overflow-hidden rounded-xl border border-navy/10 sm:col-span-2">
+                <Image
+                  src="/xap-festivals-spread.jpg"
+                  alt="'Around The World In Eight Celebrations' spread, by Nirjara Poptani and Shinjini Chaturvedi, XAP October 2024 issue"
+                  width={1600}
+                  height={1019}
+                  className="w-full"
+                />
+                <figcaption className="px-4 py-3 text-xs text-navy/50">
+                  &ldquo;Around The World In Eight Celebrations&rdquo; — Oct
+                  2024
+                </figcaption>
+              </figure>
+            </div>
           </div>
         </Reveal>
 
