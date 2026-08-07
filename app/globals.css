@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+:root {
+  --page-bg: #e8eef3;
+  --card-featured: #8fb4ce;
+  --navy: #153347;
+  --section-navy: #1b2733;
+  --ivory: #edeae1;
+  --accent-slate: #5c7c99;
+  --accent-brass: #b8894f;
+}
+
+@theme inline {
+  --color-page-bg: var(--page-bg);
+  --color-card-featured: var(--card-featured);
+  --color-navy: var(--navy);
+  --color-section-navy: var(--section-navy);
+  --color-ivory: var(--ivory);
+  --color-accent-slate: var(--accent-slate);
+  --color-accent-brass: var(--accent-brass);
+  --font-serif: var(--font-fraunces);
+  --font-sans: var(--font-work-sans);
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--navy);
+  font-family: var(--font-work-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+h1, h2, h3, h4,
+.font-serif-heading {
+  font-family: var(--font-fraunces), Georgia, serif;
+}
