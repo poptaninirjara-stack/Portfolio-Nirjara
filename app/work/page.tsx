@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import CategoryTag from "@/components/CategoryTag";
@@ -94,23 +95,49 @@ export default function WorkPage() {
             <p className="mt-1 text-sm text-navy/50">
               Dec 2023 – May 2024
             </p>
-            <div className="mt-4 max-w-2xl space-y-4 text-base leading-relaxed text-navy/80">
-              <p>
-                Two sister publications under the same organisation, tackled
-                during coursework in web content writing. For Esteem, work
-                centred on editing J.M. Barrie&rsquo;s <em>Peter Pan</em> for
-                republication — a close, chapter-by-chapter read for grammar,
-                continuity, and typesetting, and a first introduction to
-                editing a full book rather than standalone articles.
-              </p>
-              <p>
-                Alongside this, leading a team of eight classmates for The
-                Social, a segment covering current social issues, from
-                concept and title selection through to final edit and
-                publishing on WordPress. This period also included early spec
-                work across formats — social posts, reel scripts, and
-                carousels — as part of the same coursework.
-              </p>
+            <div className="mt-4 flex flex-col gap-6 sm:flex-row sm:items-start">
+              <a
+                href="https://store.pothi.com/book/j-m-barrie-peter-pan/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-28 shrink-0 overflow-hidden rounded-lg border border-navy/10 transition-transform hover:-translate-y-1 sm:w-32"
+              >
+                <Image
+                  src="/esteem-peter-pan-cover.jpg"
+                  alt="Peter Pan by J.M. Barrie, Esteem Publication edition, editor's insight by Nirjara Poptani"
+                  width={371}
+                  height={477}
+                  className="w-full"
+                />
+              </a>
+              <div className="max-w-2xl space-y-4 text-base leading-relaxed text-navy/80">
+                <p>
+                  Two sister publications under the same organisation,
+                  tackled during coursework in web content writing. For
+                  Esteem, work centred on editing J.M. Barrie&rsquo;s{" "}
+                  <em>Peter Pan</em> for republication — a close,
+                  chapter-by-chapter read for grammar, continuity, and
+                  typesetting, and a first introduction to editing a full
+                  book rather than standalone articles.
+                </p>
+                <p>
+                  Alongside this, leading a team of eight classmates for The
+                  Social, a segment covering current social issues, from
+                  concept and title selection through to final edit and
+                  publishing on WordPress. This period also included early
+                  spec work across formats — social posts, reel scripts, and
+                  carousels — as part of the same coursework.
+                </p>
+                <a
+                  href="https://store.pothi.com/book/j-m-barrie-peter-pan/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-sm text-accent-brass"
+                >
+                  View the published edition
+                  <span aria-hidden>→</span>
+                </a>
+              </div>
             </div>
             <div className="mt-6">
               <p className="mb-2 text-sm text-navy/50">
