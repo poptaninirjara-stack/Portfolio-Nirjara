@@ -8,15 +8,13 @@ export default function TypewriterHero({ text }: { text: string }) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    setCount(0);
-
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
     if (prefersReducedMotion) {
-      setCount(text.length);
-      return;
+      const timeout = setTimeout(() => setCount(text.length), 0);
+      return () => clearTimeout(timeout);
     }
 
     let i = 0;
