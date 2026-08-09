@@ -100,14 +100,14 @@ export default function WorkPage() {
                 href="https://store.pothi.com/book/j-m-barrie-peter-pan/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-28 shrink-0 overflow-hidden rounded-lg border border-navy/10 transition-transform hover:-translate-y-1 sm:w-32"
+                className="group block w-48 shrink-0 overflow-hidden rounded-xl border-2 border-accent-brass/30 shadow-xl shadow-navy/15 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-accent-brass/25 sm:w-56"
               >
                 <Image
                   src="/esteem-peter-pan-cover.jpg"
                   alt="Peter Pan by J.M. Barrie, Esteem Publication edition, editor's insight by Nirjara Poptani"
                   width={371}
                   height={477}
-                  className="w-full"
+                  className="w-full transition-transform duration-300 group-hover:scale-105"
                 />
               </a>
               <div className="max-w-2xl space-y-4 text-base leading-relaxed text-navy/80">

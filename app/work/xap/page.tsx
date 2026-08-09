@@ -213,42 +213,42 @@ export default function XapPage() {
               about politics it didn&rsquo;t need to have.
             </p>
 
-            <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <figure className="overflow-hidden rounded-xl border border-navy/10">
+            <div className="mt-10 flex flex-col gap-10">
+              <figure className="group overflow-hidden rounded-2xl border-2 border-accent-brass/25 shadow-xl shadow-navy/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent-brass/25">
                 <Image
                   src="/xap-india-diversity.jpg"
                   alt="'India: An Ombre of Diversity', by Nirjara Poptani, XAP August–September 2024 issue"
                   width={1600}
                   height={1392}
-                  className="w-full"
+                  className="w-full transition-transform duration-300 group-hover:scale-105"
                 />
-                <figcaption className="px-4 py-3 text-xs text-navy/50">
+                <figcaption className="bg-white/60 px-5 py-4 text-sm font-medium text-navy/70">
                   &ldquo;India: An Ombre of Diversity&rdquo; — Aug–Sept 2024
                 </figcaption>
               </figure>
 
-              <figure className="overflow-hidden rounded-xl border border-navy/10">
+              <figure className="group overflow-hidden rounded-2xl border-2 border-accent-brass/25 shadow-xl shadow-navy/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent-brass/25">
                 <Image
                   src="/xap-sabarmati-review.jpg"
                   alt="Movie review of 'The Sabarmati Report', by Nirjara Poptani, XAP November 2024 issue"
                   width={1600}
                   height={1070}
-                  className="w-full"
+                  className="w-full transition-transform duration-300 group-hover:scale-105"
                 />
-                <figcaption className="px-4 py-3 text-xs text-navy/50">
+                <figcaption className="bg-white/60 px-5 py-4 text-sm font-medium text-navy/70">
                   &ldquo;The Sabarmati Report&rdquo; review — Nov 2024
                 </figcaption>
               </figure>
 
-              <figure className="overflow-hidden rounded-xl border border-navy/10 sm:col-span-2">
+              <figure className="group overflow-hidden rounded-2xl border-2 border-accent-brass/25 shadow-xl shadow-navy/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent-brass/25">
                 <Image
                   src="/xap-festivals-spread.jpg"
                   alt="'Around The World In Eight Celebrations' spread, by Nirjara Poptani and Shinjini Chaturvedi, XAP October 2024 issue"
                   width={1600}
                   height={1019}
-                  className="w-full"
+                  className="w-full transition-transform duration-300 group-hover:scale-105"
                 />
-                <figcaption className="px-4 py-3 text-xs text-navy/50">
+                <figcaption className="bg-white/60 px-5 py-4 text-sm font-medium text-navy/70">
                   &ldquo;Around The World In Eight Celebrations&rdquo; — Oct
                   2024
                 </figcaption>

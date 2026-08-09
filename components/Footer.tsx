@@ -5,23 +5,10 @@ export default function Footer() {
     <footer className="border-t border-navy/10 bg-page-bg">
       <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-10 text-sm text-navy/70 sm:flex-row sm:items-center sm:justify-between">
         <p className="font-serif-heading text-base text-navy/90 italic">
-          Every word carries significance.
+          Let&rsquo;s create impact
         </p>
 
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-          <a
-            href="/Nirjara-Poptani-Resume.pdf"
-            download
-            className="transition-colors hover:text-accent-slate"
-          >
-            Resume
-          </a>
-          <a
-            href="mailto:poptaninirjara@gmail.com"
-            className="transition-colors hover:text-accent-slate"
-          >
-            Email
-          </a>
           <a
             href="https://linkedin.com/in/nirjarap"
             target="_blank"
@@ -29,6 +16,13 @@ export default function Footer() {
             className="transition-colors hover:text-accent-slate"
           >
             LinkedIn
+          </a>
+          <a
+            href="/Nirjara-Poptani-Resume.pdf"
+            download
+            className="transition-colors hover:text-accent-slate"
+          >
+            Resume
           </a>
           <Link href="/contact" className="transition-colors hover:text-accent-slate">
             Contact

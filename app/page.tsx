@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import WorkCard from "@/components/WorkCard";
+import TypewriterHero from "@/components/TypewriterHero";
 
 const workPreview = [
   {
     name: "Chaakri",
     stat: "Increased reach by 76%",
     href: "/work/chaakri",
-    featured: true,
   },
   {
     name: "Ivy Prep",
@@ -34,30 +34,26 @@ const workPreview = [
     stat: "Handled copy for 30+ real estate clients",
     href: "/work#sane-creative-studio",
   },
-];
+].map((item, i) => ({ ...item, featured: i % 2 === 0 }));
 
 export default function Home() {
   return (
     <div>
       {/* Hero */}
       <section className="mx-auto max-w-5xl px-6 pt-24 pb-20 sm:pt-36 sm:pb-28">
-        <Reveal>
-          <h1 className="font-serif-heading max-w-3xl text-4xl leading-[1.15] font-semibold text-navy sm:text-6xl sm:leading-[1.1]">
-            A writer who edits, and an editor who writes.
-          </h1>
-        </Reveal>
+        <TypewriterHero text="A writer who edits, and an editor who writes." />
       </section>
 
       {/* About */}
       <section className="mx-auto max-w-5xl px-6 pb-24 sm:pb-32">
         <Reveal>
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-[auto_1fr] sm:items-start sm:gap-14">
-            <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-full border border-navy/10 sm:h-32 sm:w-32">
+            <div className="relative h-[114px] w-[114px] shrink-0 overflow-hidden rounded-full border border-navy/10 sm:h-[131px] sm:w-[131px]">
               <Image
                 src="/nirjara-photo.jpg"
                 alt="Nirjara Poptani"
                 fill
-                sizes="128px"
+                sizes="131px"
                 className="object-cover"
               />
             </div>

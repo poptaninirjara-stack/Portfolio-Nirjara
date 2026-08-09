@@ -23,7 +23,7 @@
 }
 
 body {
-  background: var(--page-bg);
+  background-color: var(--page-bg);
   color: var(--navy);
   font-family: var(--font-work-sans), ui-sans-serif, system-ui, sans-serif;
 }
