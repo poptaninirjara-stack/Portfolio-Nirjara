@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import CategoryTag from "@/components/CategoryTag";
 import PageHeader from "@/components/PageHeader";
-import HashDetails from "@/components/HashDetails";
+import EssayTeaser from "@/components/EssayTeaser";
+import { publicEssays } from "@/lib/content/essays";
 
-export const metadata: Metadata = {
-  title: "Writing and editing",
+export const metadata: Metadata = pageMetadata({
+  title: "Writing and editing portfolio",
   description:
     "Editorial and communication work by Nirjara Poptani: academic editing at Ivy Prep, the XAP periodical, Chaakri, Esteem Publication, and critical essays.",
-  alternates: { canonical: "/writing" },
-};
+  path: "/writing",
+});
 
 const caseStudies = [
   {
@@ -63,21 +65,6 @@ const editing = [
   },
 ];
 
-const earlierCommercial = [
-  {
-    name: "Copywriting",
-    description: "Brand copy, campaign taglines and ad copy.",
-  },
-  {
-    name: "Scriptwriting",
-    description: "Audio-visual and reel scripts.",
-  },
-  {
-    name: "Social media content",
-    description: "Captions, post copy and campaign content for specific platforms and audiences.",
-  },
-];
-
 export default function WritingPage() {
   return (
     <div className="pb-24">
@@ -94,10 +81,32 @@ export default function WritingPage() {
       </PageHeader>
 
       <div className="mx-auto max-w-[70rem] px-6">
+        {/* Literary essays */}
+        <section aria-labelledby="essays">
+          <h2 id="essays" className="kicker mb-3">
+            01 Literary essays
+          </h2>
+          <p className="font-serif-heading mb-6 text-2xl font-medium text-navy sm:text-3xl">
+            Literary analysis
+          </p>
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+            {publicEssays.map((e, i) => (
+              <Reveal key={e.slug} className="h-full">
+                <EssayTeaser essay={e} featured={i === 0} />
+              </Reveal>
+            ))}
+          </div>
+          <p className="mt-5 text-sm">
+            <Link href="/writing/essays" className="text-link">
+              All essays, with abstracts and excerpts
+            </Link>
+          </p>
+        </section>
+
         {/* Case studies */}
-        <section aria-labelledby="case-studies">
+        <section aria-labelledby="case-studies" className="mt-16 border-t border-rule pt-8">
           <h2 id="case-studies" className="kicker mb-6">
-            01 Case studies
+            02 Case studies
           </h2>
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
             {caseStudies.map((c, i) => (
@@ -126,24 +135,6 @@ export default function WritingPage() {
               </Reveal>
             ))}
           </div>
-        </section>
-
-        {/* Essays */}
-        <section aria-labelledby="essays" className="mt-16 border-t border-rule pt-8">
-          <h2 id="essays" className="kicker mb-4">
-            02 Essays
-          </h2>
-          <Reveal>
-            <Link href="/writing/essays" className="group block max-w-[45rem]">
-              <p className="font-serif-heading text-2xl font-medium text-navy group-hover:underline">
-                Essays in literary analysis
-              </p>
-              <p className="mt-2 text-base leading-relaxed text-ink-soft">
-                Literary analysis of Rohinton Mistry and R.K. Narayan, with abstracts and
-                excerpts. Full texts are available on request.
-              </p>
-            </Link>
-          </Reveal>
         </section>
 
         {/* Esteem & Social Digest */}
@@ -242,43 +233,6 @@ export default function WritingPage() {
               </div>
             ))}
           </dl>
-
-          <h3 className="kicker mt-10 mb-3">Earlier commercial work</h3>
-          <dl className="max-w-[56rem] divide-y divide-rule border-y border-rule">
-            {earlierCommercial.map((s) => (
-              <div key={s.name} className="grid grid-cols-1 gap-1 py-4 sm:grid-cols-[1fr_2fr] sm:gap-8">
-                <dt className="font-medium text-navy">{s.name}</dt>
-                <dd className="text-[0.95rem] leading-relaxed text-ink-soft">{s.description}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-
-        {/* Earlier roles */}
-        <section aria-labelledby="earlier-roles" className="mt-16 border-t border-rule pt-8">
-          <h2 id="earlier-roles" className="kicker mb-2">
-            05 Earlier roles
-          </h2>
-          <HashDetails
-            id="sane-creative-studio"
-            className="max-w-[56rem] border-b border-rule"
-            summary={
-              <span>
-                <span className="font-serif-heading text-xl font-medium text-navy">
-                  Sane Creative Studio
-                </span>
-                <span className="ml-3 text-sm text-ink-soft">Junior Copywriter · Dec 2024 – Mar 2025</span>
-              </span>
-            }
-          >
-            <p className="max-w-[42rem] pb-6 text-base leading-[1.7] text-ink-soft">
-              A short, high-volume stint across roughly 30 real estate and lifestyle
-              clients. I handled most of the studio&rsquo;s monthly output (post copy,
-              captions, campaign content and property listing reel scripts) alongside
-              end-to-end campaign copy, including taglines, ad copy, and OOH print and
-              billboard work.
-            </p>
-          </HashDetails>
         </section>
       </div>
     </div>

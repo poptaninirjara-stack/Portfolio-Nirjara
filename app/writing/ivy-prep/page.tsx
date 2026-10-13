@@ -1,26 +1,23 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
+import BackLink from "@/components/BackLink";
 import Reveal from "@/components/Reveal";
 import CategoryTag from "@/components/CategoryTag";
 import SectionBreak from "@/components/SectionBreak";
 
-export const metadata: Metadata = {
-  title: "Ivy Prep",
+export const metadata: Metadata = pageMetadata({
+  title: "Ivy Prep: academic writing and application editing",
   description:
     "Ivy Prep case study: coaching students through academic argument, research essays and application writing.",
-  alternates: { canonical: "/writing/ivy-prep" },
-};
+  path: "/writing/ivy-prep",
+});
 
 export default function IvyPrepPage() {
   return (
     <div>
       <div className="mx-auto max-w-[45rem] px-6 pt-16 pb-14 sm:pt-24">
         <Reveal>
-          <p className="kicker mb-4">
-            <Link href="/writing" className="hover:underline">
-              Writing and editing
-            </Link>
-          </p>
+          <BackLink href="/writing" label="Writing and editing" />
           <div className="mb-5 flex flex-wrap gap-2">
             <CategoryTag label="Academic writing" />
             <CategoryTag label="Editing" />

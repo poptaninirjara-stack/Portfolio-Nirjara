@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import { absoluteUrl, profileLinks, site } from "@/lib/site";
@@ -8,12 +9,13 @@ import { publicPublications } from "@/lib/content/publications";
 import { education, experience, skills, type CVEntry } from "@/lib/content/cv";
 import { statusLabel } from "@/lib/content/types";
 
-export const metadata: Metadata = {
-  title: "CV",
+export const metadata: Metadata = pageMetadata({
+  title: "CV: MA English Literature, Fergusson College",
   description:
     "Curriculum vitae of Nirjara Poptani: education, research interests, editorial experience and skills. PDF available to download.",
-  alternates: { canonical: "/cv" },
-};
+  path: "/cv",
+  type: "profile",
+});
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
+import BackLink from "@/components/BackLink";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import CategoryTag from "@/components/CategoryTag";
@@ -7,23 +8,19 @@ import PullQuote from "@/components/PullQuote";
 import SectionBreak from "@/components/SectionBreak";
 import InstagramEmbed from "@/components/InstagramEmbed";
 
-export const metadata: Metadata = {
-  title: "Chaakri",
+export const metadata: Metadata = pageMetadata({
+  title: "Chaakri: brand voice for an NGO-run ethical brand",
   description:
     "Chaakri case study: brand voice and content strategy for an NGO-run ethical brand supporting women garment workers, 2021 to present.",
-  alternates: { canonical: "/writing/chaakri" },
-};
+  path: "/writing/chaakri",
+});
 
 export default function ChaakriPage() {
   return (
     <div>
       <div className="mx-auto max-w-[45rem] px-6 pt-16 pb-14 sm:pt-24">
         <Reveal>
-          <p className="kicker mb-4">
-            <Link href="/writing" className="hover:underline">
-              Writing and editing
-            </Link>
-          </p>
+          <BackLink href="/writing" label="Writing and editing" />
           <div className="mb-5 flex flex-wrap gap-2">
             <CategoryTag label="Brand Identity" />
             <CategoryTag label="Content Strategy" />

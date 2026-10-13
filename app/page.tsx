@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
@@ -7,6 +8,8 @@ import TypewriterHero from "@/components/TypewriterHero";
 import ResearchTheme from "@/components/ResearchTheme";
 import PublicationItem from "@/components/PublicationItem";
 import ContactStrip from "@/components/ContactStrip";
+import EssayTeaser from "@/components/EssayTeaser";
+import { publicEssays } from "@/lib/content/essays";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/lib/site";
 import { personJsonLd } from "@/lib/person";
@@ -14,9 +17,8 @@ import { themes } from "@/lib/content/research";
 import { publicPublications } from "@/lib/content/publications";
 
 export const metadata: Metadata = {
-  title: { absolute: `${site.name} — Indian literary and media narratives` },
-  description: site.description,
-  alternates: { canonical: "/" },
+  ...pageMetadata({ title: "Researcher in Indian literary and media narratives", description: site.description, path: "/", type: "profile" }),
+  title: { absolute: `${site.name} — Researcher in Indian literary and media narratives` },
 };
 
 const writing = [
@@ -33,12 +35,6 @@ const writing = [
     summary:
       "Senior Editor of Xavier’s Ahmedabad Periodical: thirty-plus articles edited, and editorial calls made on voice, representation and care.",
     href: "/writing/xap",
-  },
-  {
-    kicker: "Literary analysis",
-    name: "Essays",
-    summary: "Literary analysis of Rohinton Mistry’s A Fine Balance and R.K. Narayan’s spiritual heroes.",
-    href: "/writing/essays",
   },
 ];
 
@@ -89,14 +85,14 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative hidden h-[220px] w-[176px] shrink-0 overflow-hidden rounded border border-rule md:block lg:h-[260px] lg:w-[208px]">
+          <div className="relative order-first h-36 w-36 shrink-0 overflow-hidden rounded-full border-4 border-paper shadow-lg ring-1 ring-navy/15 md:order-none md:h-[230px] md:w-[230px] lg:h-[260px] lg:w-[260px]">
             <Image
               src="/nirjara-portrait.jpg"
               alt="Portrait of Nirjara Poptani"
               fill
               priority
-              sizes="208px"
-              className="object-cover"
+              sizes="(min-width: 1024px) 260px, (min-width: 768px) 230px, 144px"
+              className="object-cover object-[50%_22%]"
             />
           </div>
         </div>
@@ -137,7 +133,7 @@ export default function Home() {
               {recent.length ? (
                 recent.map((p) => <PublicationItem key={p.slug} pub={p} compact />)
               ) : (
-                <p className="border-t border-rule py-6 text-ink-soft">
+                <p className="font-serif-heading border-t border-rule pt-6 text-2xl text-navy italic sm:text-3xl">
                   Publications coming soon.
                 </p>
               )}
@@ -157,10 +153,21 @@ export default function Home() {
               All writing →
             </Link>
           </div>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <h3 className="font-serif-heading mb-4 text-2xl font-medium text-navy sm:text-3xl">
+            Literary essays
+          </h3>
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+            {publicEssays.map((e, i) => (
+              <Reveal key={e.slug} delay={i * 0.05} className="h-full">
+                <EssayTeaser essay={e} featured={i === 0} headingLevel="h3" />
+              </Reveal>
+            ))}
+          </div>
+          <h3 className="kicker mt-10 mb-4">Editing</h3>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             {writing.map((item, i) => (
               <Reveal key={item.name} delay={i * 0.05} className="h-full">
-                <WorkCard {...item} featured={i === 0} />
+                <WorkCard {...item} />
               </Reveal>
             ))}
           </div>

@@ -63,6 +63,8 @@ export type Publication = Placeholder & {
 export type Essay = Placeholder & {
   slug: string;
   title: string;
+  /** Short title for browser tabs and search results (under ~45 characters). */
+  metaTitle: string;
   /** Shown as the card label, e.g. "Literary analysis". */
   kind: string;
   abstract: string;

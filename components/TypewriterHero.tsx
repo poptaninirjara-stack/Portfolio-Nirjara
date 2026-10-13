@@ -34,7 +34,7 @@ export default function TypewriterHero({ text }: { text: string }) {
   const done = count >= text.length;
 
   return (
-    <p className="font-serif-heading relative text-lg text-slate italic sm:text-xl">
+    <p className="font-serif-heading relative text-2xl leading-snug font-medium text-slate italic sm:text-[2.1rem]">
       <span className="sr-only">{text}</span>
       <span aria-hidden className="invisible">
         {text}

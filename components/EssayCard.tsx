@@ -1,6 +1,7 @@
 import Link from "next/link";
 import CategoryTag from "@/components/CategoryTag";
 import type { Essay } from "@/lib/content/types";
+import { hasWebText } from "@/lib/content/essays";
 
 export default function EssayCard({ essay }: { essay: Essay }) {
   return (
@@ -36,16 +37,21 @@ export default function EssayCard({ essay }: { essay: Essay }) {
       </div>
 
       <p className="mt-6 text-sm">
-        {essay.publicFullText && essay.fullTextPdf ? (
-          <a
-            href={essay.fullTextPdf}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-sm border border-navy px-3 py-1.5 font-medium text-navy transition-colors hover:bg-navy hover:text-paper"
-          >
-            Read the full essay (PDF)
-            <span aria-hidden>→</span>
-          </a>
+        {hasWebText(essay) ? (
+          <span className="flex flex-wrap items-center gap-x-5 gap-y-3">
+            <Link
+              href={`/writing/essays/${essay.slug}`}
+              className="inline-flex items-center gap-1.5 rounded-sm border border-navy bg-navy px-3 py-1.5 font-medium text-paper transition-opacity hover:opacity-90"
+            >
+              Read the full essay
+              <span aria-hidden>→</span>
+            </Link>
+            {essay.fullTextPdf && (
+              <a href={essay.fullTextPdf} target="_blank" rel="noopener noreferrer" className="text-link">
+                PDF
+              </a>
+            )}
+          </span>
         ) : (
           <>
             <span className="text-ink-soft">Full text available on request. </span>

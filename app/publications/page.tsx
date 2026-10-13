@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import PageHeader from "@/components/PageHeader";
 import PublicationItem from "@/components/PublicationItem";
 import PublicationList from "@/components/PublicationList";
 import { publicPublications } from "@/lib/content/publications";
 
-export const metadata: Metadata = {
-  title: "Publications",
+export const metadata: Metadata = pageMetadata({
+  title: "Publications and manuscripts",
   description:
     "Publications and manuscripts by Nirjara Poptani, with status. Manuscripts under review are available on request.",
-  alternates: { canonical: "/publications" },
-};
+  path: "/publications",
+});
 
 export default function PublicationsPage() {
   return (

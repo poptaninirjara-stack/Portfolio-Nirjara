@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
+import { shareImage } from "@/lib/metadata";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -32,7 +33,9 @@ export const metadata: Metadata = {
     title: site.name,
     description: site.description,
     url: "/",
+    images: [shareImage],
   },
+  twitter: { card: "summary_large_image", images: [shareImage.url] },
   // verification.google: add once the Search Console token exists.
 };
 

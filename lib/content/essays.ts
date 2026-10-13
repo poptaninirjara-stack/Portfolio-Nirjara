@@ -1,4 +1,5 @@
 import type { Essay } from "./types";
+import { essayTexts } from "./essay-texts";
 
 // Source: "Essays for website/" (author’s PDFs). All quoted text is verbatim.
 // Rules (brief, section 5):
@@ -10,6 +11,7 @@ export const essays: Essay[] = [
     slug: "mimicry-and-mutilation-a-fine-balance",
     title:
       "Feudal Tyranny to State Biopower: Mimicry and Mutilation in Mistry’s A Fine Balance",
+    metaTitle: "Mimicry and Mutilation in Mistry’s A Fine Balance",
     kind: "Literary analysis",
     abstract:
       "This essay analyses Rohiton Mistry's A Fine Balance (1995) through a postcolonial and poststructuralist lens. Using Homi Bhabha's concepts of mimicry and ambivalence as primary grounding, and Michel Foucault's models of biopower and bodily regulation alongside it. Primarily, the essay argues that the postcolonial power structures in India did not function as a seamless regime. Instead, they functioned as an anxious formation whose claims to absolute control were unsettled by subaltern mimicry and hybrid domestic spaces. Set during the Emergency, the text portrays state rhetoric merged with feudal caste hierarchies and aggressive biopolitical power over the subaltern power. However, while Bhabha's framework shows how the subaltern subject negotiates and creates domestic spaces, Mistry's narrative realism demonstrates that symbolic slippage remains insufficient to shield the subaltern body from state inflicted violence and measures of absolute control.",
@@ -27,6 +29,7 @@ export const essays: Essay[] = [
     slug: "failed-refuge-narayan",
     title:
       "The Failed Refuge: Sainthood, Renunciation, and the Illusion of Escape in R.K. Narayan’s The Guide and The Vendor of Sweets",
+    metaTitle: "The Failed Refuge: sainthood in R.K. Narayan",
     kind: "Literary analysis",
     abstract:
       "R.K. Narayan, a critically acclaimed Indian English novelist, presents recurring spiritual patterns in his novels. Across a spiritual guide and renunciation of the world in his selected texts, namely The Guide (1958) and The Vendor of Sweets (1976), Narayan shows a pattern of his heroes making choices and unable to face the consequences and hence retreating or finding refuge in spirituality. This essay questions how this strategy proves to be successful or unsuccessful in these narratives and what it implies about Narayan's patterns of storytelling. However, this essay does not rely on a fixed theoretical framework and instead focuses on analysing these patterns through close reading to reveal what the text portrays about the narrative structure and Narayan's portrayal of the refuge to spirituality by his chief characters like Raju and Jagan.",
@@ -48,3 +51,10 @@ export const visibleEssays = essays.filter((e) => e.placeholder || e.cleared);
 
 /** Real, shareable essays. The essays route enters the sitemap only when this is non-empty. */
 export const publicEssays = essays.filter((e) => !e.placeholder && e.cleared);
+
+/** Essays readable in full on the site at /writing/essays/[slug]. */
+export const hasWebText = (e: Essay) => e.publicFullText && Boolean(essayTexts[e.slug]);
+
+/** Where an essay card should link: its own page if readable, else its entry. */
+export const essayHref = (e: Essay) =>
+  hasWebText(e) ? `/writing/essays/${e.slug}` : `/writing/essays#${e.slug}`;

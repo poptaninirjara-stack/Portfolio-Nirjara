@@ -2,11 +2,11 @@ import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/site";
 import { projectPages } from "@/lib/content/research";
 import { publicationPages } from "@/lib/content/publications";
-import { publicEssays } from "@/lib/content/essays";
+import { hasWebText, publicEssays } from "@/lib/content/essays";
 
 // Public routes and published items only. Under-review, in-preparation and
-// restricted items are never listed; the essays page joins once a real,
-// final and graded essay exists.
+// restricted items are never listed; the essays page joins once a cleared
+// essay exists, and full-text essays get their own entries.
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "/",
@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/writing/ivy-prep",
     "/writing/xap",
     ...(publicEssays.length ? ["/writing/essays"] : []),
+    ...publicEssays.filter(hasWebText).map((e) => `/writing/essays/${e.slug}`),
     "/cv",
     "/contact",
     ...projectPages.map((p) => `/research/${p.slug}`),

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
+import BackLink from "@/components/BackLink";
 import { notFound } from "next/navigation";
 import StatusChip from "@/components/StatusChip";
 import CategoryTag from "@/components/CategoryTag";
@@ -20,11 +21,7 @@ export async function generateMetadata(
   const { slug } = await props.params;
   const project = getProject(slug);
   if (!project) return {};
-  return {
-    title: project.title,
-    description: project.question,
-    alternates: { canonical: `/research/${project.slug}` },
-  };
+  return pageMetadata({ title: project.title, description: project.question, path: `/research/${project.slug}` });
 }
 
 export default async function ProjectPage(props: PageProps<"/research/[slug]">) {
@@ -35,12 +32,12 @@ export default async function ProjectPage(props: PageProps<"/research/[slug]">) 
 
   return (
     <article className="mx-auto max-w-[45rem] px-6 pt-16 pb-24 sm:pt-24">
-      <p className="kicker mb-4">
-        <Link href="/research" className="hover:underline">
-          Research
-        </Link>
-        {theme && ` · ${theme.number} ${theme.title}`}
-      </p>
+      <BackLink href="/research" label="Research" />
+      {theme && (
+        <p className="kicker mb-4">
+          {theme.number} {theme.title}
+        </p>
+      )}
       <StatusChip status={project.status} />
       <h1 className="font-serif-heading mt-4 text-4xl leading-[1.1] font-semibold text-navy sm:text-5xl">
         {project.title}

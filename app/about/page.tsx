@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 import Reveal from "@/components/Reveal";
-import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "About",
+export const metadata: Metadata = pageMetadata({
+  title: "About: researcher and editor",
   description:
     "About Nirjara Poptani: MA English Literature at Fergusson College, research in Indian narratives, and a background in editing and writing.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+  type: "profile",
+});
 
 const education = [
   { dates: "2026–2028", title: "MA, English Literature", org: "Fergusson College (Autonomous), Pune" },
@@ -105,7 +106,9 @@ export default function AboutPage() {
                 </div>
               ))}
             </dl>
-            <p className="mt-6 text-sm text-ink-soft">{site.availability}</p>
+            <p className="font-serif-heading mt-10 border-t border-rule pt-8 text-center text-2xl text-navy italic">
+              Nirjara: A Researcher and Editor
+            </p>
           </section>
         </Reveal>
       </div>

@@ -1,27 +1,25 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
+import BackLink from "@/components/BackLink";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import CategoryTag from "@/components/CategoryTag";
 import SectionBreak from "@/components/SectionBreak";
+import Extract from "@/components/Extract";
 
-export const metadata: Metadata = {
-  title: "XAP",
+export const metadata: Metadata = pageMetadata({
+  title: "XAP: editing Xavier’s Ahmedabad Periodical",
   description:
     "XAP case study: editing Xavier’s Ahmedabad Periodical, from Junior Editor to Senior Editor of a twenty-five-strong team.",
-  alternates: { canonical: "/writing/xap" },
-};
+  path: "/writing/xap",
+});
 
 export default function XapPage() {
   return (
     <div>
       <div className="mx-auto max-w-[45rem] px-6 pt-16 pb-14 sm:pt-24">
         <Reveal>
-          <p className="kicker mb-4">
-            <Link href="/writing" className="hover:underline">
-              Writing and editing
-            </Link>
-          </p>
+          <BackLink href="/writing" label="Writing and editing" />
           <div className="mb-5 flex flex-wrap items-center gap-4">
             <Image
               src="/xap-logo.png"
@@ -64,6 +62,16 @@ export default function XapPage() {
               about respecting the storyteller — the kind of judgement I
               care the most about bringing to any piece of editing.
             </p>
+            <Extract
+              src="/xap/xap-housekeeping.jpg"
+              width={1053}
+              height={1078}
+              alt="Silent Hands, Strong Hearts: XAP interview with Jyotsna ben, Lakshmi ben and Rekha ben of the Xavier’s housekeeping staff"
+              source="XAP · November 2025 · p. 7"
+              note="Three members of the housekeeping staff speak about their routines, families and hopes. When asked what they would choose to become if given another chance, all three answered: teachers."
+              pdf="/xap-november-2025.pdf"
+              page={6}
+            />
             <a
               href="/xap-november-2025.pdf"
               target="_blank"
@@ -147,6 +155,16 @@ export default function XapPage() {
               bring to my working style: the tool can assist, the judgement
               and the voice have to stay human.
             </p>
+            <Extract
+              src="/xap/xap-mosaic.jpg"
+              width={1148}
+              height={873}
+              alt="A Mosaic of Art and Culture, by Nirjara Poptani with insights from Prof. Deesha Khetani, XAP June 2026"
+              source="XAP · June 2026 · p. 1"
+              note="The rewritten piece, bylined “Nirjara Poptani, with insights from Prof. Deesha Khetani, Coordinator ECC”, built from her own quotes rather than the AI draft."
+              pdf="/xap-june-2026.pdf"
+              page={1}
+            />
             <a
               href="/xap-june-2026.pdf"
               target="_blank"
@@ -177,6 +195,16 @@ export default function XapPage() {
               full rewrite, but the alternative was running a piece that
               misrepresented someone who&rsquo;d trusted us with her story.
             </p>
+            <Extract
+              src="/xap/xap-nandini.jpg"
+              width={1600}
+              height={1416}
+              alt="Fests, Memories and Secrets: with Nandni Ranpara, XAP June 2026 interview"
+              source="XAP · June 2026 · p. 3"
+              note="The published interview, reassigned to a new writer after three drafts that did not represent her fairly."
+              pdf="/xap-june-2026.pdf"
+              page={3}
+            />
           </div>
         </Reveal>
 
@@ -200,6 +228,26 @@ export default function XapPage() {
               land harder by contrast rather than getting lost in a wall of
               heavy reading.
             </p>
+            <Extract
+              src="/xap/xap-wise-men.jpg"
+              width={1600}
+              height={585}
+              alt="Wise Men, Missing the Point: pull-quote strip with lines from Shaw, Napoleon, Wilde and Plato beneath the media and misogyny spread, XAP November 2025"
+              source="XAP · November 2025 · pp. 4–5"
+              note="The curated pull-quote strip: lines from Napoleon, Plato, Shaw and Wilde, alongside film dialogue, set directly beneath the articles on media and misogyny."
+              pdf="/xap-november-2025.pdf"
+              page={4}
+            />
+            <Extract
+              src="/xap/xap-page-six.jpg"
+              width={1600}
+              height={1212}
+              alt="Page six of XAP June 2026: Is AI Killing the VIBE? beside The Academic Enemies to Lovers"
+              source="XAP · June 2026 · p. 6"
+              note="Tone balanced across one page: the conversational, Hinglish-inflected “Is AI Killing the VIBE?” beside “The Academic Enemies to Lovers”."
+              pdf="/xap-june-2026.pdf"
+              page={5}
+            />
           </div>
         </Reveal>
 
@@ -224,6 +272,16 @@ export default function XapPage() {
             </p>
 
             <div className="mt-10 flex flex-col gap-10">
+              <Extract
+                src="/xap/xap-nov-cover.jpg"
+                width={1600}
+                height={1100}
+                alt="XAP November 2025 front page: Womanhood and The World by Nirjara Poptani, and Father David interviewed by Nirjara Poptani and Niki Raval"
+                source="XAP · November 2025 · cover"
+                note="The issue’s opening piece, “Womanhood & The World: Xavier’s & Beyond”, and the interview with Fr. Dr. David Roy, both bylined Nirjara Poptani."
+                pdf="/xap-november-2025.pdf"
+                page={1}
+              />
               <figure className="group overflow-hidden rounded border border-rule shadow-md shadow-navy/10">
                 <Image
                   src="/xap-india-diversity.jpg"

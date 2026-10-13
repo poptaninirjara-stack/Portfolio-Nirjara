@@ -3,11 +3,9 @@ import { profileLinks, site } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-rule bg-paper print:hidden">
+    <footer className="border-t border-rule print:hidden">
       <div className="mx-auto flex max-w-[70rem] flex-col gap-5 px-6 py-10 text-sm text-ink-soft sm:flex-row sm:items-start sm:justify-between">
-        <p className="font-serif-heading max-w-sm text-base text-navy italic">
-          {site.availability}
-        </p>
+        <p className="font-serif-heading text-base font-medium text-navy">{site.name}</p>
 
         <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
           <li>

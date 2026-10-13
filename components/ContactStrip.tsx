@@ -18,9 +18,6 @@ export default function ContactStrip() {
           >
             Research collaborations, internships and RA roles.
           </h2>
-          <p className="mt-4 max-w-md leading-relaxed text-ivory/85">
-            {site.availability}
-          </p>
         </div>
         <ul className="flex flex-col gap-3 text-base md:items-end">
           <li>

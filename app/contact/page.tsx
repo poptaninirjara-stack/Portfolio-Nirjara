@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Suspense } from "react";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
@@ -7,12 +8,12 @@ import { profileLinks, site } from "@/lib/site";
 import { publicPublications } from "@/lib/content/publications";
 import { visibleEssays } from "@/lib/content/essays";
 
-export const metadata: Metadata = {
-  title: "Contact",
+export const metadata: Metadata = pageMetadata({
+  title: "Contact: research, internships and editing",
   description:
     "Contact Nirjara Poptani about research collaboration, internships and research-assistant roles, manuscript requests or editing.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 // slug → title for items that can be requested by email.
 const itemTitles = Object.fromEntries(

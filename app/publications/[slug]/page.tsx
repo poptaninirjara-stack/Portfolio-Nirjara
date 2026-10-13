@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
+import BackLink from "@/components/BackLink";
 import { notFound } from "next/navigation";
 import StatusChip from "@/components/StatusChip";
 import CategoryTag from "@/components/CategoryTag";
@@ -35,9 +36,7 @@ export async function generateMetadata(
   if (pub.pdf) citation.citation_pdf_url = absoluteUrl(pub.pdf);
 
   return {
-    title: pub.title,
-    description: pub.abstract?.slice(0, 160) ?? pub.researchQuestion,
-    alternates: { canonical: `/publications/${pub.slug}` },
+    ...pageMetadata({ title: pub.title, description: pub.abstract?.slice(0, 160) ?? pub.researchQuestion, path: `/publications/${pub.slug}`, type: "article" }),
     other: citation,
   };
 }
@@ -63,11 +62,7 @@ export default async function PublicationPage(props: PageProps<"/publications/[s
           url: absoluteUrl(`/publications/${pub.slug}`),
         }}
       />
-      <p className="kicker mb-4">
-        <Link href="/publications" className="hover:underline">
-          Publications
-        </Link>
-      </p>
+      <BackLink href="/publications" label="Publications" />
       <StatusChip status={pub.status} />
       <h1 className="font-serif-heading mt-4 text-4xl leading-[1.1] font-semibold text-navy sm:text-5xl">
         {pub.title}

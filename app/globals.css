@@ -39,6 +39,13 @@
 
 body {
   background-color: var(--paper);
+  /* Faint vertical pinstripes across the whole site */
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgb(21 51 71 / 0.035) 0 1px,
+    transparent 1px 32px
+  );
+  background-attachment: fixed;
   color: var(--navy);
   font-family: var(--font-work-sans), ui-sans-serif, system-ui, sans-serif;
 }
@@ -46,6 +53,16 @@ body {
 @layer base {
   h1, h2, h3, h4 {
     font-family: var(--font-fraunces), Georgia, serif;
+  }
+
+  /* Justify running text. Single-line text is unaffected (the last line of a
+     block is never justified), and utilities such as text-center still win. */
+  main :is(p, blockquote, li, dd):not(.text-sm, .text-xs) {
+    text-align: justify;
+    hyphens: auto;
+  }
+  main .text-center :is(p, blockquote, li) {
+    text-align: center;
   }
 }
 
@@ -115,6 +132,7 @@ details > summary::-webkit-details-marker {
   }
   body {
     background: #fff;
+    background-image: none;
     font-size: 10pt;
   }
   a {

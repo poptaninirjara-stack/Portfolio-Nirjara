@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 import Reveal from "@/components/Reveal";
@@ -7,12 +8,12 @@ import ProjectCard from "@/components/ProjectCard";
 import { site } from "@/lib/site";
 import { publicProjects, themes } from "@/lib/content/research";
 
-export const metadata: Metadata = {
-  title: "Research",
+export const metadata: Metadata = pageMetadata({
+  title: "Research: disability, caste and decolonial critique",
   description:
     "Research themes: disability in Indian narratives and Indian aesthetics, decolonial critique of Eurocentric criticism, and alternate histories of caste.",
-  alternates: { canonical: "/research" },
-};
+  path: "/research",
+});
 
 export default function ResearchPage() {
   return (
