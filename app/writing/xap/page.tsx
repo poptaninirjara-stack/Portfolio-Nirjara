@@ -1,17 +1,27 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import CategoryTag from "@/components/CategoryTag";
 import SectionBreak from "@/components/SectionBreak";
 
-export const metadata = {
-  title: "XAP — Nirjara Poptani",
+export const metadata: Metadata = {
+  title: "XAP",
+  description:
+    "XAP case study: editing Xavier’s Ahmedabad Periodical, from Junior Editor to Senior Editor of a twenty-five-strong team.",
+  alternates: { canonical: "/writing/xap" },
 };
 
 export default function XapPage() {
   return (
     <div>
-      <div className="mx-auto max-w-3xl px-6 pt-16 pb-14 sm:pt-24">
+      <div className="mx-auto max-w-[45rem] px-6 pt-16 pb-14 sm:pt-24">
         <Reveal>
+          <p className="kicker mb-4">
+            <Link href="/writing" className="hover:underline">
+              Writing and editing
+            </Link>
+          </p>
           <div className="mb-5 flex flex-wrap items-center gap-4">
             <Image
               src="/xap-logo.png"
@@ -25,17 +35,17 @@ export default function XapPage() {
               <CategoryTag label="Leadership" />
             </div>
           </div>
-          <h1 className="font-serif-heading text-3xl font-semibold text-navy sm:text-4xl">
+          <h1 className="font-serif-heading text-4xl leading-[1.1] font-semibold text-navy sm:text-5xl">
             XAP
           </h1>
-          <p className="mt-2 text-sm text-navy/50">
+          <p className="mt-2 text-sm text-ink-soft">
             Xavier&rsquo;s Ahmedabad Periodical · 2024–2026
           </p>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="mt-12 space-y-6 text-base leading-relaxed text-navy/85 sm:text-lg">
-            <p className="mb-1 text-sm tracking-wide text-accent-brass uppercase">
+          <div className="mt-12 space-y-6 text-base leading-relaxed text-ink-soft sm:text-lg">
+            <p className="kicker mb-3">
               The Interview That Mattered Most
             </p>
             <p>
@@ -58,7 +68,7 @@ export default function XapPage() {
               href="/xap-november-2025.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm text-accent-brass"
+              className="inline-flex items-center gap-1 text-sm font-medium text-brass-text hover:underline"
             >
               Read the full November 2025 issue
               <span aria-hidden>→</span>
@@ -67,11 +77,11 @@ export default function XapPage() {
         </Reveal>
 
         <Reveal>
-          <div className="mt-16 border-t border-navy/10 pt-10">
-            <p className="mb-2 text-sm tracking-wide text-accent-brass uppercase">
+          <div className="mt-16 border-t border-rule pt-10">
+            <p className="kicker mb-3">
               From Junior Editor to &ldquo;Mini-Daily&rdquo;
             </p>
-            <p className="text-base leading-relaxed text-navy/85 sm:text-lg">
+            <p className="text-base leading-relaxed text-ink-soft sm:text-lg">
               In 2024, I joined XAP as a Junior Editor. I was mostly reading,
               shortlisting submissions and sending them to the Senior
               Editors for the final issue. But this changed fast, in July
@@ -86,11 +96,11 @@ export default function XapPage() {
         </Reveal>
 
         <Reveal>
-          <div className="mt-16 border-t border-navy/10 pt-10">
-            <p className="mb-2 text-sm tracking-wide text-accent-brass uppercase">
+          <div className="mt-16 border-t border-rule pt-10">
+            <p className="kicker mb-3">
               Rebuilding the Team
             </p>
-            <p className="text-base leading-relaxed text-navy/85 sm:text-lg">
+            <p className="text-base leading-relaxed text-ink-soft sm:text-lg">
               By the time I became a Senior Editor, then the only one left
               after my co-editors graduated, I inherited a team of ten and a
               paper that hadn&rsquo;t yet built the systems a growing
@@ -119,12 +129,12 @@ export default function XapPage() {
         </p>
       </SectionBreak>
 
-      <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
+      <div className="mx-auto max-w-[45rem] px-6 py-16 sm:py-20">
         <Reveal>
-          <p className="mb-2 text-sm tracking-wide text-accent-brass uppercase">
+          <p className="kicker mb-3">
             When AI Wrote the Draft
           </p>
-          <div className="space-y-6 text-base leading-relaxed text-navy/85 sm:text-lg">
+          <div className="space-y-6 text-base leading-relaxed text-ink-soft sm:text-lg">
             <p>
               The editorial judgement mattered more than the org chart. For
               the June 2026 issue, a faculty head from ECC sent us an
@@ -141,7 +151,7 @@ export default function XapPage() {
               href="/xap-june-2026.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm text-accent-brass"
+              className="inline-flex items-center gap-1 text-sm font-medium text-brass-text hover:underline"
             >
               Read the full June 2026 issue
               <span aria-hidden>→</span>
@@ -150,11 +160,11 @@ export default function XapPage() {
         </Reveal>
 
         <Reveal>
-          <div className="mt-16 border-t border-navy/10 pt-10">
-            <p className="mb-2 text-sm tracking-wide text-accent-brass uppercase">
+          <div className="mt-16 border-t border-rule pt-10">
+            <p className="kicker mb-3">
               The Hardest Call
             </p>
-            <p className="text-base leading-relaxed text-navy/85 sm:text-lg">
+            <p className="text-base leading-relaxed text-ink-soft sm:text-lg">
               The hardest editorial call I made was in an interview with
               Nandini Ranpara, marketing head (2023-2025) and ECC head
               (2025-2026). The tone in the first two drafts, written by our
@@ -171,11 +181,11 @@ export default function XapPage() {
         </Reveal>
 
         <Reveal>
-          <div className="mt-16 border-t border-navy/10 pt-10">
-            <p className="mb-2 text-sm tracking-wide text-accent-brass uppercase">
+          <div className="mt-16 border-t border-rule pt-10">
+            <p className="kicker mb-3">
               Small Decisions, Structural Weight
             </p>
-            <p className="text-base leading-relaxed text-navy/85 sm:text-lg">
+            <p className="text-base leading-relaxed text-ink-soft sm:text-lg">
               Some of my best editorial decisions were smaller and more
               structural. On the November 2025 issue&rsquo;s spread on media
               and misogyny, I curated the pull-quotes at the bottom of the
@@ -194,11 +204,11 @@ export default function XapPage() {
         </Reveal>
 
         <Reveal>
-          <div className="mt-16 border-t border-navy/10 pt-10">
-            <p className="mb-2 text-sm tracking-wide text-accent-brass uppercase">
+          <div className="mt-16 border-t border-rule pt-10">
+            <p className="kicker mb-3">
               Writing, Not Just Editing
             </p>
-            <p className="text-base leading-relaxed text-navy/85 sm:text-lg">
+            <p className="text-base leading-relaxed text-ink-soft sm:text-lg">
               I wrote, too, not just edited. The November issue&rsquo;s
               opening piece, on womanhood at Xavier&rsquo;s and in general,
               was mine — continued a page later under &ldquo;Oh Woman, Where
@@ -214,41 +224,41 @@ export default function XapPage() {
             </p>
 
             <div className="mt-10 flex flex-col gap-10">
-              <figure className="group overflow-hidden rounded-2xl border-2 border-accent-brass/25 shadow-xl shadow-navy/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent-brass/25">
+              <figure className="group overflow-hidden rounded border border-rule shadow-md shadow-navy/10">
                 <Image
                   src="/xap-india-diversity.jpg"
                   alt="'India: An Ombre of Diversity', by Nirjara Poptani, XAP August–September 2024 issue"
                   width={1600}
                   height={1392}
-                  className="w-full transition-transform duration-300 group-hover:scale-105"
+                  className="w-full"
                 />
-                <figcaption className="bg-white/60 px-5 py-4 text-sm font-medium text-navy/70">
+                <figcaption className="bg-mist px-5 py-4 text-sm font-medium text-ink-soft">
                   &ldquo;India: An Ombre of Diversity&rdquo; — Aug–Sept 2024
                 </figcaption>
               </figure>
 
-              <figure className="group overflow-hidden rounded-2xl border-2 border-accent-brass/25 shadow-xl shadow-navy/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent-brass/25">
+              <figure className="group overflow-hidden rounded border border-rule shadow-md shadow-navy/10">
                 <Image
                   src="/xap-sabarmati-review.jpg"
                   alt="Movie review of 'The Sabarmati Report', by Nirjara Poptani, XAP November 2024 issue"
                   width={1600}
                   height={1070}
-                  className="w-full transition-transform duration-300 group-hover:scale-105"
+                  className="w-full"
                 />
-                <figcaption className="bg-white/60 px-5 py-4 text-sm font-medium text-navy/70">
+                <figcaption className="bg-mist px-5 py-4 text-sm font-medium text-ink-soft">
                   &ldquo;The Sabarmati Report&rdquo; review — Nov 2024
                 </figcaption>
               </figure>
 
-              <figure className="group overflow-hidden rounded-2xl border-2 border-accent-brass/25 shadow-xl shadow-navy/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent-brass/25">
+              <figure className="group overflow-hidden rounded border border-rule shadow-md shadow-navy/10">
                 <Image
                   src="/xap-festivals-spread.jpg"
                   alt="'Around The World In Eight Celebrations' spread, by Nirjara Poptani and Shinjini Chaturvedi, XAP October 2024 issue"
                   width={1600}
                   height={1019}
-                  className="w-full transition-transform duration-300 group-hover:scale-105"
+                  className="w-full"
                 />
-                <figcaption className="bg-white/60 px-5 py-4 text-sm font-medium text-navy/70">
+                <figcaption className="bg-mist px-5 py-4 text-sm font-medium text-ink-soft">
                   &ldquo;Around The World In Eight Celebrations&rdquo; — Oct
                   2024
                 </figcaption>
@@ -258,8 +268,8 @@ export default function XapPage() {
         </Reveal>
 
         <Reveal>
-          <div className="mt-16 border-t border-navy/10 pt-10">
-            <p className="text-base leading-relaxed text-navy/85 sm:text-lg">
+          <div className="mt-16 border-t border-rule pt-10">
+            <p className="text-base leading-relaxed text-ink-soft sm:text-lg">
               Both the November 2025 and June 2026 issues carry my layout
               work too. I sketched the page structure for each, planned
               space for late-breaking articles and ads, and made the calls

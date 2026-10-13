@@ -1,36 +1,46 @@
 import Link from "next/link";
+import { profileLinks, site } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-navy/10 bg-page-bg">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-10 text-sm text-navy/70 sm:flex-row sm:items-center sm:justify-between">
-        <p className="font-serif-heading text-base text-navy/90 italic">
-          Let&rsquo;s create impact
+    <footer className="border-t border-rule bg-paper print:hidden">
+      <div className="mx-auto flex max-w-[70rem] flex-col gap-5 px-6 py-10 text-sm text-ink-soft sm:flex-row sm:items-start sm:justify-between">
+        <p className="font-serif-heading max-w-sm text-base text-navy italic">
+          {site.availability}
         </p>
 
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-          <a
-            href="https://linkedin.com/in/nirjarap"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-accent-slate"
-          >
-            LinkedIn
-          </a>
-          <a
-            href="/Nirjara-Poptani-Resume.pdf"
-            download
-            className="transition-colors hover:text-accent-slate"
-          >
-            Resume
-          </a>
-          <Link href="/contact" className="transition-colors hover:text-accent-slate">
-            Contact
-          </Link>
-        </div>
+        <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+          <li>
+            <a href={`mailto:${site.email}`} className="transition-colors hover:text-slate">
+              {site.email}
+            </a>
+          </li>
+          {profileLinks().map((l) => (
+            <li key={l.label}>
+              <a
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-slate"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+          <li>
+            <Link href="/cv" className="transition-colors hover:text-slate">
+              CV
+            </Link>
+          </li>
+          <li>
+            <Link href="/contact" className="transition-colors hover:text-slate">
+              Contact
+            </Link>
+          </li>
+        </ul>
       </div>
-      <div className="border-t border-navy/10 px-6 py-4 text-center text-xs text-navy/50">
-        © {new Date().getFullYear()} Nirjara Poptani. All rights reserved.
+      <div className="border-t border-rule px-6 py-4 text-center text-xs text-ink-soft">
+        © {new Date().getFullYear()} {site.name}
       </div>
     </footer>
   );

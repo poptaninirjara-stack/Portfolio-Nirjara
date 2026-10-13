@@ -1,52 +1,66 @@
+import type { Metadata } from "next";
+import { Suspense } from "react";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
+import PageHeader from "@/components/PageHeader";
+import { profileLinks, site } from "@/lib/site";
+import { publicPublications } from "@/lib/content/publications";
+import { visibleEssays } from "@/lib/content/essays";
 
-export const metadata = {
-  title: "Contact — Nirjara Poptani",
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Contact Nirjara Poptani about research collaboration, internships and research-assistant roles, manuscript requests or editing.",
+  alternates: { canonical: "/contact" },
 };
+
+// slug → title for items that can be requested by email.
+const itemTitles = Object.fromEntries(
+  [
+    ...publicPublications.filter((p) => p.status === "under-review"),
+    ...visibleEssays.filter((e) => !e.publicFullText),
+  ].map((i) => [i.slug, i.title])
+);
 
 export default function ContactPage() {
   return (
-    <div className="mx-auto max-w-2xl px-6 pt-16 pb-28 sm:pt-24">
-      <Reveal>
-        <h1 className="font-serif-heading text-4xl font-semibold text-navy sm:text-5xl">
-          Contact
-        </h1>
-        <p className="mt-6 max-w-lg text-base leading-relaxed text-navy/80 sm:text-lg">
-          Every good piece starts with a conversation. Tell me a little about
-          what you&rsquo;re working on, and I&rsquo;ll get back to you soon.
+    <div className="pb-24">
+      <PageHeader title="Contact">
+        <p>
+          For research collaboration, internship or research-assistant enquiries,
+          manuscript requests or editing, choose an enquiry type below. I usually reply
+          within a few days.
         </p>
-      </Reveal>
+      </PageHeader>
 
-      <Reveal delay={0.1}>
-        <ContactForm />
-      </Reveal>
+      <div className="mx-auto max-w-[45rem] px-6">
+        <Reveal>
+          {/* useSearchParams needs a Suspense boundary to keep this page prerendered. */}
+          <Suspense fallback={<div className="h-[34rem]" aria-hidden />}>
+            <ContactForm itemTitles={itemTitles} />
+          </Suspense>
+        </Reveal>
 
-      <Reveal delay={0.15}>
-        <div className="mt-16 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-navy/10 pt-8 text-sm text-navy/70">
-          <a
-            href="/Nirjara-Poptani-Resume.pdf"
-            download
-            className="transition-colors hover:text-accent-slate"
-          >
-            Download resume
+        <div className="mt-16 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-rule pt-8 text-sm text-ink-soft">
+          <a href={`mailto:${site.email}`} className="transition-colors hover:text-slate">
+            {site.email}
           </a>
-          <a
-            href="mailto:poptaninirjara@gmail.com"
-            className="transition-colors hover:text-accent-slate"
-          >
-            poptaninirjara@gmail.com
-          </a>
-          <a
-            href="https://linkedin.com/in/nirjarap"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-accent-slate"
-          >
-            linkedin.com/in/nirjarap
+          {profileLinks().map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-slate"
+            >
+              {l.label}
+            </a>
+          ))}
+          <a href={site.cvPdf} download className="transition-colors hover:text-slate">
+            Download CV
           </a>
         </div>
-      </Reveal>
+      </div>
     </div>
   );
 }

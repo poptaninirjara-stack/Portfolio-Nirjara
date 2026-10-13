@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Author source files: full texts shared by email only, never deployed
+/Essays for website/
+/About me.docx
+/linkedin photo.jpeg
+~$*
+~WRL*.tmp

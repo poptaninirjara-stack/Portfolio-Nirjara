@@ -1,30 +1,47 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import CategoryTag from "@/components/CategoryTag";
 import SectionBreak from "@/components/SectionBreak";
 
-export const metadata = {
-  title: "Ivy Prep — Nirjara Poptani",
+export const metadata: Metadata = {
+  title: "Ivy Prep",
+  description:
+    "Ivy Prep case study: coaching students through academic argument, research essays and application writing.",
+  alternates: { canonical: "/writing/ivy-prep" },
 };
 
 export default function IvyPrepPage() {
   return (
     <div>
-      <div className="mx-auto max-w-3xl px-6 pt-16 pb-14 sm:pt-24">
+      <div className="mx-auto max-w-[45rem] px-6 pt-16 pb-14 sm:pt-24">
         <Reveal>
+          <p className="kicker mb-4">
+            <Link href="/writing" className="hover:underline">
+              Writing and editing
+            </Link>
+          </p>
           <div className="mb-5 flex flex-wrap gap-2">
-            <CategoryTag label="Editorial" />
+            <CategoryTag label="Academic writing" />
+            <CategoryTag label="Editing" />
             <CategoryTag label="Coaching" />
           </div>
-          <h1 className="font-serif-heading text-3xl font-semibold text-navy sm:text-4xl">
+          <h1 className="font-serif-heading text-4xl leading-[1.1] font-semibold text-navy sm:text-5xl">
             Ivy Prep
           </h1>
-          <p className="mt-2 text-sm text-navy/50">
-            Essay Editing · Academic Coaching · Until May 2026
+          <p className="font-serif-heading mt-3 text-xl leading-snug text-ink-soft italic">
+            Teaching the process of academic writing, from argument to citation
+          </p>
+          <p className="mt-2 text-sm text-ink-soft">
+            Academic Coordinator, Ivy Prep India · January–May 2026
+          </p>
+          <p className="mt-6 rounded-sm border border-rule bg-mist px-4 py-3 text-sm leading-relaxed text-ink-soft">
+            No student writing is reproduced here, and students are not named.
           </p>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="mt-12 space-y-6 text-base leading-relaxed text-navy/85 sm:text-lg">
+          <div className="mt-12 space-y-6 text-base leading-relaxed text-ink-soft sm:text-lg">
             <p>
               At Ivy Prep, I worked with two very different kinds of student
               writing. One was UCAS and UK-bound applications, where the
@@ -60,12 +77,12 @@ export default function IvyPrepPage() {
         </p>
       </SectionBreak>
 
-      <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
+      <div className="mx-auto max-w-[45rem] px-6 py-16 sm:py-20">
         <Reveal>
-          <p className="mb-2 text-sm tracking-wide text-accent-brass uppercase">
+          <p className="kicker mb-3">
             The John Locke Institute Essay
           </p>
-          <div className="space-y-6 text-base leading-relaxed text-navy/85 sm:text-lg">
+          <div className="space-y-6 text-base leading-relaxed text-ink-soft sm:text-lg">
             <p>
               That problem is part of why the John Locke Institute essay
               stands out. I worked with three students on their submissions,
@@ -98,11 +115,25 @@ export default function IvyPrepPage() {
         </Reveal>
 
         <Reveal>
-          <div className="mt-16 border-t border-navy/10 pt-10">
-            <p className="mb-2 text-sm tracking-wide text-accent-brass uppercase">
+          <div className="mt-12 rounded border border-rule bg-mist p-6 sm:p-8">
+            <h2 className="kicker mb-4">The process, step by step</h2>
+            <ol className="list-decimal space-y-2 pl-5 text-base leading-relaxed text-ink-soft marker:text-slate">
+              <li>Groundwork in academic writing: structure, argument, language.</li>
+              <li>Finding an angle beyond the obvious, through theory.</li>
+              <li>Building the argument and supporting it with evidence.</li>
+              <li>Citing academic sources only.</li>
+              <li>First draft, joint review, and a second draft tightened for readability.</li>
+              <li>Final citations, reference list, and two full proofreads.</li>
+            </ol>
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <div className="mt-16 border-t border-rule pt-10">
+            <p className="kicker mb-3">
               Undergraduate Journal Program
             </p>
-            <p className="text-base leading-relaxed text-navy/85 sm:text-lg">
+            <p className="text-base leading-relaxed text-ink-soft sm:text-lg">
               The Undergraduate Journal Program ran alongside this.
               It&rsquo;s a three-part series, each part built around a
               different aspect of a student&rsquo;s life, meant to document
@@ -122,11 +153,11 @@ export default function IvyPrepPage() {
         </Reveal>
 
         <Reveal>
-          <div className="mt-16 border-t border-navy/10 pt-10">
-            <p className="mb-2 text-sm tracking-wide text-accent-brass uppercase">
+          <div className="mt-16 border-t border-rule pt-10">
+            <p className="kicker mb-3">
               Building a Blog From Nothing
             </p>
-            <p className="text-base leading-relaxed text-navy/85 sm:text-lg">
+            <p className="text-base leading-relaxed text-ink-soft sm:text-lg">
               The blog-building work came in almost as an afterthought, but I
               enjoyed it more than expected. I set up a student&rsquo;s
               WordPress account and built her site from scratch, then worked
@@ -134,18 +165,16 @@ export default function IvyPrepPage() {
               liked, what she was good at, what shaped her. We wrote her
               About Me page together, then moved into blog posts about her
               life as a teenager, the classes she&rsquo;d taken, trips
-              she&rsquo;d been on. She&rsquo;d barely written before this and
-              was quiet, an introvert who found it genuinely difficult to
-              open up on the page, but she was self-driven, and after a few
-              sessions, she started producing good, honest writing on her
-              own.
+              she&rsquo;d been on. She had written very little before this,
+              and after a few sessions she was producing good, honest writing
+              on her own.
             </p>
           </div>
         </Reveal>
 
         <Reveal>
-          <div className="mt-16 border-t border-navy/10 pt-10">
-            <p className="text-base leading-relaxed text-navy/85 sm:text-lg">
+          <div className="mt-16 border-t border-rule pt-10">
+            <p className="text-base leading-relaxed text-ink-soft sm:text-lg">
               By May 2026, when I left Ivy Prep to begin my Master&rsquo;s,
               the work had taken a few different shapes, essay editing,
               academic coaching, a journal program, even a blog built from

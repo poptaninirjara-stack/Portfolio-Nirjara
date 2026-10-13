@@ -3,6 +3,7 @@ import { Fraunces, Work_Sans } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { site } from "@/lib/site";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -19,9 +20,20 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Nirjara Poptani — Copywriter & Editor",
-  description:
-    "A writer who edits, and an editor who writes. Portfolio of Nirjara Poptani, copywriter and editor.",
+  metadataBase: new URL(site.url),
+  title: { default: site.name, template: `%s — ${site.name}` },
+  description: site.description,
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "website",
+    locale: "en_GB",
+    siteName: site.name,
+    title: site.name,
+    description: site.description,
+    url: "/",
+  },
+  // verification.google: add once the Search Console token exists.
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -30,9 +42,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en-GB"
       className={`${fraunces.variable} ${workSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-page-bg text-navy">
+      <body className="flex min-h-full flex-col bg-paper text-navy">
+        <a
+          href="#main"
+          className="sr-only z-[60] rounded-sm bg-navy px-4 py-2 text-paper focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+        >
+          Skip to content
+        </a>
         <Nav />
-        <main className="flex-1">{children}</main>
+        <main id="main" className="flex-1">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

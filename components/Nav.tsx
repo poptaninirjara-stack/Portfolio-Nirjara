@@ -3,37 +3,44 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { site } from "@/lib/site";
 
 const links = [
-  { href: "/work", label: "Work" },
-  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/research", label: "Research" },
+  { href: "/publications", label: "Publications" },
+  { href: "/writing", label: "Writing" },
+  { href: "/cv", label: "CV" },
   { href: "/contact", label: "Contact" },
 ];
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const isActive = (href: string) =>
+    pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-navy/10 bg-page-bg/90 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <header className="sticky top-0 z-50 border-b border-rule bg-paper/90 backdrop-blur-sm print:hidden">
+      <div className="mx-auto flex max-w-[70rem] items-center justify-between px-6 py-4">
         <Link
           href="/"
           className="font-serif-heading text-lg font-semibold tracking-tight text-navy"
           onClick={() => setOpen(false)}
         >
-          Nirjara Poptani
+          {site.name}
         </Link>
 
-        <nav className="hidden gap-8 sm:flex">
+        <nav aria-label="Main" className="hidden gap-7 md:flex">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm tracking-wide transition-colors hover:text-accent-slate ${
-                pathname === link.href
-                  ? "text-navy font-medium"
-                  : "text-navy/70"
+              aria-current={isActive(link.href) ? "page" : undefined}
+              className={`text-sm tracking-wide transition-colors hover:text-slate ${
+                isActive(link.href)
+                  ? "font-medium text-navy underline decoration-brass decoration-2 underline-offset-[6px]"
+                  : "text-ink-soft"
               }`}
             >
               {link.label}
@@ -42,8 +49,10 @@ export default function Nav() {
         </nav>
 
         <button
-          className="flex flex-col gap-1.5 sm:hidden"
-          aria-label="Toggle menu"
+          className="-mr-2 flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="mobile-nav"
           onClick={() => setOpen((v) => !v)}
         >
           <span className="h-px w-6 bg-navy" />
@@ -52,12 +61,19 @@ export default function Nav() {
       </div>
 
       {open && (
-        <nav className="flex flex-col gap-1 border-t border-navy/10 px-6 py-3 sm:hidden">
+        <nav
+          id="mobile-nav"
+          aria-label="Main"
+          className="flex flex-col gap-1 border-t border-rule px-6 py-3 md:hidden"
+        >
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="py-2 text-sm text-navy/80"
+              aria-current={isActive(link.href) ? "page" : undefined}
+              className={`py-2 text-base ${
+                isActive(link.href) ? "font-medium text-navy" : "text-ink-soft"
+              }`}
               onClick={() => setOpen(false)}
             >
               {link.label}

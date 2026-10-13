@@ -1,34 +1,123 @@
 @import "tailwindcss";
 
 :root {
-  --page-bg: #e8eef3;
-  --card-featured: #8fb4ce;
-  --navy: #153347;
-  --section-navy: #1b2733;
+  /* Paper and blues */
+  --paper: #f4f7fa; /* page background: lighter, editorial, still blue-tinted */
+  --mist: #e8eef3; /* bands, cards and the CV table */
+  --steel: #8fb4ce; /* featured cards and highlight blocks */
+  --navy: #153347; /* primary text and headings */
+  --ink-soft: rgb(21 51 71 / 0.8); /* body text on paper */
+  --rule: rgb(21 51 71 / 0.12); /* hairlines */
+
+  /* Accents */
+  --slate: #46637d; /* links and text accents */
+  --slate-tint: #5c7c99; /* decorative use only, not for small text */
+  --brass: #b8894f; /* decorative only: rules, icons, large marks */
+  --brass-text: #8a6230; /* any brass used as text or a link */
+
+  /* Dark band */
+  --deep: #1b2733;
   --ivory: #edeae1;
-  --accent-slate: #5c7c99;
-  --accent-brass: #b8894f;
 }
 
 @theme inline {
-  --color-page-bg: var(--page-bg);
-  --color-card-featured: var(--card-featured);
+  --color-paper: var(--paper);
+  --color-mist: var(--mist);
+  --color-steel: var(--steel);
   --color-navy: var(--navy);
-  --color-section-navy: var(--section-navy);
+  --color-ink-soft: var(--ink-soft);
+  --color-rule: var(--rule);
+  --color-slate: var(--slate);
+  --color-slate-tint: var(--slate-tint);
+  --color-brass: var(--brass);
+  --color-brass-text: var(--brass-text);
+  --color-deep: var(--deep);
   --color-ivory: var(--ivory);
-  --color-accent-slate: var(--accent-slate);
-  --color-accent-brass: var(--accent-brass);
   --font-serif: var(--font-fraunces);
   --font-sans: var(--font-work-sans);
 }
 
 body {
-  background-color: var(--page-bg);
+  background-color: var(--paper);
   color: var(--navy);
   font-family: var(--font-work-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
-h1, h2, h3, h4,
+@layer base {
+  h1, h2, h3, h4 {
+    font-family: var(--font-fraunces), Georgia, serif;
+  }
+}
+
 .font-serif-heading {
   font-family: var(--font-fraunces), Georgia, serif;
+}
+
+:focus-visible {
+  outline: 2px solid var(--slate);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@layer components {
+  /* Small uppercase section kickers, e.g. "01 Research" */
+  .kicker {
+    font-family: var(--font-work-sans), ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate);
+  }
+  
+  /* Inline text links in reading copy */
+  .text-link {
+    color: var(--slate);
+    text-decoration: underline;
+    text-decoration-color: rgb(70 99 125 / 0.35);
+    text-underline-offset: 4px;
+    transition: text-decoration-color 150ms;
+  }
+  .text-link:hover {
+    text-decoration-color: var(--slate);
+  }
+  
+  /* Citation lists: hanging indent */
+  .hanging {
+    padding-left: 1.5rem;
+    text-indent: -1.5rem;
+  }
+}
+
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+  }
+}
+
+@media print {
+  [data-reveal] {
+    opacity: 1 !important;
+  }
+
+  @page {
+    size: A4;
+    margin: 14mm 16mm;
+  }
+  body {
+    background: #fff;
+    font-size: 10pt;
+  }
+  a {
+    text-decoration: none;
+  }
 }

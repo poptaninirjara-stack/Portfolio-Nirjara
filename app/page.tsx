@@ -1,96 +1,173 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import WorkCard from "@/components/WorkCard";
 import TypewriterHero from "@/components/TypewriterHero";
+import ResearchTheme from "@/components/ResearchTheme";
+import PublicationItem from "@/components/PublicationItem";
+import ContactStrip from "@/components/ContactStrip";
+import JsonLd from "@/components/JsonLd";
+import { site } from "@/lib/site";
+import { personJsonLd } from "@/lib/person";
+import { themes } from "@/lib/content/research";
+import { publicPublications } from "@/lib/content/publications";
 
-const workPreview = [
+export const metadata: Metadata = {
+  title: { absolute: `${site.name} — Indian literary and media narratives` },
+  description: site.description,
+  alternates: { canonical: "/" },
+};
+
+const writing = [
   {
-    name: "Chaakri",
-    stat: "Increased reach by 76%",
-    href: "/work/chaakri",
-  },
-  {
+    kicker: "Academic editing",
     name: "Ivy Prep",
-    stat: "20+ essays edited, 14+ students coached",
-    href: "/work/ivy-prep",
+    summary:
+      "Coaching students through academic argument and application writing, including a John Locke Institute essay shortlisted for the London conference.",
+    href: "/writing/ivy-prep",
   },
   {
+    kicker: "Editorial",
     name: "XAP",
-    stat: "Curated and edited 30+ articles for a periodical",
-    href: "/work/xap",
+    summary:
+      "Senior Editor of Xavier’s Ahmedabad Periodical: thirty-plus articles edited, and editorial calls made on voice, representation and care.",
+    href: "/writing/xap",
   },
   {
-    name: "Esteem",
-    stat: "Edited Peter Pan for publication",
-    href: "/work#esteem-social-digest",
+    kicker: "Literary analysis",
+    name: "Essays",
+    summary: "Literary analysis of Rohinton Mistry’s A Fine Balance and R.K. Narayan’s spiritual heroes.",
+    href: "/writing/essays",
   },
-  {
-    name: "Social Digest",
-    stat: "Edited 15+ articles for WordPress publication",
-    href: "/work#esteem-social-digest",
-  },
-  {
-    name: "Sane Creative Studio",
-    stat: "Handled copy for 30+ real estate clients",
-    href: "/work#sane-creative-studio",
-  },
-].map((item, i) => ({ ...item, featured: i % 2 === 0 }));
+];
 
 export default function Home() {
+  const recent = publicPublications.slice(0, 2);
+
   return (
     <div>
-      {/* Hero */}
-      <section className="mx-auto max-w-5xl px-6 pt-24 pb-20 sm:pt-36 sm:pb-28">
-        <TypewriterHero text="A writer who edits, and an editor who writes." />
-      </section>
+      <JsonLd data={{ "@context": "https://schema.org", ...personJsonLd() }} />
 
-      {/* About */}
-      <section className="mx-auto max-w-5xl px-6 pb-24 sm:pb-32">
-        <Reveal>
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-[auto_1fr] sm:items-start sm:gap-14">
-            <div className="relative h-[114px] w-[114px] shrink-0 overflow-hidden rounded-full border border-navy/10 sm:h-[131px] sm:w-[131px]">
-              <Image
-                src="/nirjara-photo.jpg"
-                alt="Nirjara Poptani"
-                fill
-                sizes="131px"
-                className="object-cover"
-              />
+      {/* Hero */}
+      <section className="mx-auto max-w-[70rem] px-6 pt-12 pb-12 sm:pt-16 sm:pb-14">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_auto] md:items-center md:gap-14">
+          <div className="max-w-[42rem]">
+            <h1 className="font-serif-heading text-5xl leading-[1.05] font-semibold tracking-tight text-navy sm:text-6xl">
+              {site.name}
+            </h1>
+            <div className="mt-3">
+              <TypewriterHero text={site.tagline} />
             </div>
-            <div className="max-w-2xl space-y-5 text-base leading-relaxed text-navy/85 sm:text-lg">
-              <p>
-                Every word carries significance in communicating narratives
-                and brand voice, and I&rsquo;ve spent four years making sure
-                mine sells. As an editor, I know just where to chop and where
-                to add, to polish the soul of the copy.
-              </p>
-              <p>
-                I&rsquo;m a Literature grad who learnt more about language
-                while writing than in books — which means the copy I write
-                lands across diverse audiences and contexts, whether
-                that&rsquo;s students, real estate investors, or
-                health-conscious snackers.
-              </p>
+            <p className="mt-5 text-lg leading-relaxed text-ink-soft sm:text-xl">
+              {site.positioning}
+            </p>
+            <p className="mt-2 text-sm text-ink-soft">
+              Interdisciplinary social sciences and literary studies · MA English
+              Literature, Fergusson College
+            </p>
+
+            <p className="mt-5 inline-flex items-center gap-2 rounded-sm border border-slate/40 bg-mist px-3 py-1.5 text-sm text-navy">
+              <span aria-hidden className="h-2 w-2 shrink-0 rounded-full bg-slate" />
+              {site.availability}
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href="/research"
+                className="rounded-sm bg-navy px-5 py-2.5 text-sm font-medium text-paper transition-opacity hover:opacity-90"
+              >
+                Read my research
+              </Link>
+              <a
+                href={site.cvPdf}
+                download
+                className="rounded-sm border border-navy px-5 py-2.5 text-sm font-medium text-navy transition-colors hover:bg-navy hover:text-paper"
+              >
+                Download CV
+              </a>
             </div>
           </div>
-        </Reveal>
-      </section>
 
-      {/* Work preview */}
-      <section className="mx-auto max-w-5xl px-6 pb-28 sm:pb-36">
-        <Reveal>
-          <h2 className="font-serif-heading mb-10 text-2xl font-medium text-navy sm:text-3xl">
-            Selected work
-          </h2>
-        </Reveal>
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {workPreview.map((item, i) => (
-            <Reveal key={item.name} delay={i * 0.05} className="h-full">
-              <WorkCard {...item} />
-            </Reveal>
-          ))}
+          <div className="relative hidden h-[220px] w-[176px] shrink-0 overflow-hidden rounded border border-rule md:block lg:h-[260px] lg:w-[208px]">
+            <Image
+              src="/nirjara-portrait.jpg"
+              alt="Portrait of Nirjara Poptani"
+              fill
+              priority
+              sizes="208px"
+              className="object-cover"
+            />
+          </div>
         </div>
       </section>
+
+      {/* 01 Research */}
+      <section aria-labelledby="home-research" className="border-t border-rule">
+        <div className="mx-auto max-w-[70rem] px-6 pt-8 pb-16 sm:pb-20">
+          <div className="mb-6 flex items-baseline justify-between gap-4">
+            <h2 id="home-research" className="kicker">
+              01 Research
+            </h2>
+            <Link href="/research" className="text-sm text-slate hover:underline">
+              All research →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
+            {themes.map((t) => (
+              <ResearchTheme key={t.number} theme={t} compact />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 02 Publications */}
+      <section aria-labelledby="home-publications" className="border-t border-rule">
+        <div className="mx-auto max-w-[70rem] px-6 pt-8 pb-16 sm:pb-20">
+          <div className="mb-2 flex items-baseline justify-between gap-4">
+            <h2 id="home-publications" className="kicker">
+              02 Publications
+            </h2>
+            <Link href="/publications" className="text-sm text-slate hover:underline">
+              All publications →
+            </Link>
+          </div>
+          <Reveal>
+            <div className="max-w-[45rem]">
+              {recent.length ? (
+                recent.map((p) => <PublicationItem key={p.slug} pub={p} compact />)
+              ) : (
+                <p className="border-t border-rule py-6 text-ink-soft">
+                  Publications coming soon.
+                </p>
+              )}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 03 Writing and editing */}
+      <section aria-labelledby="home-writing" className="border-t border-rule">
+        <div className="mx-auto max-w-[70rem] px-6 pt-8 pb-20 sm:pb-24">
+          <div className="mb-6 flex items-baseline justify-between gap-4">
+            <h2 id="home-writing" className="kicker">
+              03 Writing and editing
+            </h2>
+            <Link href="/writing" className="text-sm text-slate hover:underline">
+              All writing →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {writing.map((item, i) => (
+              <Reveal key={item.name} delay={i * 0.05} className="h-full">
+                <WorkCard {...item} featured={i === 0} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ContactStrip />
     </div>
   );
 }

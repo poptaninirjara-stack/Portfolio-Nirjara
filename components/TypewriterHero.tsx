@@ -2,8 +2,12 @@
 
 import { useEffect, useState } from "react";
 
-const MS_PER_CHAR = 85;
+const MS_PER_CHAR = 55;
 
+/**
+ * Types out a secondary hero line. Not a heading: the page H1 is the name.
+ * The full line is laid out invisibly underneath so the hero never shifts.
+ */
 export default function TypewriterHero({ text }: { text: string }) {
   const [count, setCount] = useState(0);
 
@@ -30,16 +34,19 @@ export default function TypewriterHero({ text }: { text: string }) {
   const done = count >= text.length;
 
   return (
-    <h1 className="font-serif-heading max-w-3xl text-4xl leading-[1.15] font-semibold text-navy sm:text-6xl sm:leading-[1.1]">
-      <span aria-hidden>
+    <p className="font-serif-heading relative text-lg text-slate italic sm:text-xl">
+      <span className="sr-only">{text}</span>
+      <span aria-hidden className="invisible">
+        {text}
+      </span>
+      <span aria-hidden className="absolute inset-0">
         {text.slice(0, count)}
         <span
-          className={`ml-1 inline-block h-[0.9em] w-[2px] translate-y-[0.1em] bg-accent-brass align-middle ${
-            done ? "animate-pulse" : "opacity-100"
+          className={`ml-0.5 inline-block h-[0.9em] w-[2px] translate-y-[0.1em] bg-brass align-middle ${
+            done ? "animate-pulse" : ""
           }`}
         />
       </span>
-      <span className="sr-only">{text}</span>
-    </h1>
+    </p>
   );
 }

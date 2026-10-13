@@ -3,6 +3,10 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
+/**
+ * Gentle fade-in on scroll. Reduced-motion users see content immediately:
+ * globals.css forces [data-reveal] to full opacity under that media query.
+ */
 export default function Reveal({
   children,
   delay = 0,
@@ -14,10 +18,11 @@ export default function Reveal({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      data-reveal
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6, delay, ease: "easeOut" }}
       className={className}
     >
       {children}
